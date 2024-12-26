@@ -15,7 +15,7 @@ export class ToDoPage {
     readonly todoItemLabel: Locator
     readonly buttonSelectTask: Locator
     readonly buttonDeleteTask: Locator
-
+    readonly footerNavigation: Locator
 
     constructor(page: Page) {
         this.page = page;
@@ -31,6 +31,7 @@ export class ToDoPage {
         this.todoItemLabel = page.getByTestId('todo-item-label');
         this.buttonSelectTask = page.getByTestId('todo-item-toggle');
         this.buttonDeleteTask = page.getByTestId('todo-item-button');
+        this.footerNavigation = page.locator('span.todo-count');
 
     }
     async OpenToDoPage() {
@@ -41,7 +42,7 @@ export class ToDoPage {
         return await this.todoItemLabel.count()
     }
 
-    async deleteItemByName(taskName: string) {
+    async deleteTaskByName(taskName: string) {
         const taskToDelete = this.page.getByText(taskName)
         await taskToDelete.hover()
         await this.buttonDeleteTask.click()
