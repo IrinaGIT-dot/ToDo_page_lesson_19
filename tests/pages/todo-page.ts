@@ -32,7 +32,6 @@ export class ToDoPage {
         this.buttonSelectTask = page.getByTestId('todo-item-toggle');
         this.buttonDeleteTask = page.getByTestId('todo-item-button');
         this.footerNavigation = page.locator('span.todo-count');
-
     }
     async OpenToDoPage() {
         await this.page.goto(this.url)
